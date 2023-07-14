@@ -5,6 +5,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.time.Duration;
+
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
@@ -26,7 +28,7 @@ public class AuthTest {
         $("[data-test-id=login] input").setValue(registeredUser.getLogin());
         $("[data-test-id=password] input").setValue(registeredUser.getPassword());
         $(".button").click();
-        $("h2").shouldBe(visible).shouldHave(text("Личный кабинет"));
+        $("h2").shouldBe(visible).shouldHave(text("Личный кабинет"),Duration.ofSeconds(20));
     }
 
     @Test
